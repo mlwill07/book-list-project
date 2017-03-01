@@ -15,4 +15,8 @@ angular.module('myApp', ['ui.materialize', 'ngRoute'])
             templateUrl: 'components/search/search.html',
             controller: 'searchController'
         })
+        .otherwise({
+            redirectTo: '/home'
+        })
 }])
+

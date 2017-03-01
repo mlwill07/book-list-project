@@ -1,0 +1,104 @@
+<div class='container'>
+    <div class="row">
+        <div class="col m12 l9 main">
+            <h3 class="center-align title">{{query}}</h3>
+            <div class="row homeContainer">
+                <div class="bookitems" ng-repeat='title in newReleases track by $index'>
+
+
+                    <div data-target='bookModal{{$index+1}}' modal class="bookCovers" style='background-image: url("{{title.volumeInfo.imageLinks.smallThumbnail}})'>
+                        <!--                        <img class='responsive-img ' ng-src='{{title.volumeInfo.imageLinks.thumbnail}}' data-target='bookModal{{$index+1}}' modal>-->
+                    </div>
+
+                    <div id="bookModal{{$index+1}}" class="modal">
+                        <div class="modal-content">
+                            <div class="row modal-rows">
+                                <div class="col s12">
+                                    <h5>{{title.volumeInfo.title}} <small class='right'>Author(s): <span ng-repeat='author in title.volumeInfo.authors'>{{author}}</span> </small></h5>
+                                </div>
+                            </div>
+                            <div class='divider'></div>
+
+                            <div class="row modal-rows">
+                                <div class="col s3">
+
+
+                                    <img class='modal-img' ng-src="{{title.volumeInfo.imageLinks.smallThumbnail}}" alt="">
+
+                                </div>
+                                <div class="col s9" ng-hide='adding'>
+                                    <p class='modalDescription'>{{title.volumeInfo.description}}</p>
+                                </div>
+
+                                <div class="col s9" ng-show='adding'>
+                                    <div input-field>
+                                        <select name='listType' ng-model="data.listType" material-select watch>
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value='future'>Add to future reading</option>
+
+                                            <option value='current'>Add to current reading</option>
+
+                                            <option value='past'>Add to past reading</option>
+
+                                        </select>
+
+                                        <div ng-if="data.listType === 'past'" input-field>
+                                            <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
+                                            <label>Review</label>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <a class="waves-effect waves-green btn-flat" ng-click="adding = !adding" ng-hide='adding'>Add to My List</a>
+
+                            <a ng-show='adding' href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='addBook(title.volumeInfo, data)' message="Added!" duration="1000" toast='click'>Add</a>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col m12 l3 options left-align">
+            <h5 data-target='searchModal' modal class="blue lighten-3 waves-effect waves-blue btn-flat">Search</h5>
+
+            <h5 class="blue lighten-3 waves-effect waves-blue btn-flat" ng-click="subject = !subject">Subject</h5>
+            <ul ng-show="subject">
+                <li ng-repeat="subject in subjects" ng-click="assignQuery(subject)"><a class="waves-effect waves-green btn-flat">{{subject}}</a></li>
+
+            </ul>
+        </div>
+        <div id="searchModal" class="modal">
+            <div class="modal-content">
+                <div input-field>
+                    <div input-field>
+                        <input type="text" name='keyword' ng-model="search.keywords" length="150">
+                        <label for='keyword'>Keyword Search</label>
+                    </div>
+                    <div class="input-field">
+                        <input name='title' type="text" ng-model="search.intitle" length="150">
+                        <label for='title'>Title Search</label>
+                    </div>
+                    <div class="input-field">
+                        <input name='author' type="text" ng-model="search.inauthor" length="150">
+                        <label for='author'>Author Search</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <a class="modal-action modal-close green lighten-2 waves-effect waves-green btn-flat" ng-click="bookSearch(search)">Search</a>
+            </div>
+        </div>
+    </div>

@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use('/books', require("./routes/bookRoutes"))
+
 mongoose.connect('mongodb://localhost/bookshelves',  function(err){
     if(err) {
         throw err;

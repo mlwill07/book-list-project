@@ -1,0 +1,116 @@
+
+
+.bookitems {
+    display: inline-block;
+    
+}
+
+.homeContainer {
+    margin-left: 0px !important;
+}
+
+.bookCovers {
+    display: inline-block;
+    border: 5px solid white;
+    overflow: hidden;
+    height: 195px;
+    width: 130px;
+    background: center center no-repeat;
+    background-size: contain;
+    
+}
+
+#searchModal {
+    min-height: 250px;
+}
+
+.options ul >li{
+    padding-left: 0px;
+}
+
+.bookDiv {
+    visibility: hidden;
+}
+
+.bookDiv:hover .bookDiv:focus {
+    visibility: visible;
+    color: yellow;
+    
+}
+
+.bookSpecs {
+    display: inline-block;
+    max-height: 200px;
+    
+    text-overflow: clip;    
+}
+
+.modalDescription {
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: scroll;
+}
+
+.modal-rows {
+    margin-bottom: 0px;
+}
+
+.modal-img {
+    margin-top: 20px;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: white;
+    font-size: 1.5em;
+}
+
+.tabs .indicator {
+    background-color: #2196f3;
+}
+.title {
+    padding-right: 75px;
+}
+
+.tabs-fixed-width {
+    margin-bottom: 25px;
+}
+
+.card-tabs {
+    font-size: 1em;
+}
+
+.card.horizontal {
+    max-width: 100%;
+    overflow: scroll;
+}
+
+.editmodal {
+    min-height: 300px;
+}
+
+.card-description {
+    max-height: 250px;
+    overflow: scroll;
+}
+
+.card .card-content {
+    padding: 10px;
+}
+
+.card .card-image img {
+    top: 30px;
+}
+
+.coll-title {
+    text-decoration: underline;
+}
+
+.coll-row {
+    margin-bottom: 0px;
+}
+
+.card-content p {
+    padding: 10px;
+}
+
+
