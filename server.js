@@ -4,14 +4,23 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 8000;
+var config = require('./config');
+var jwt = require('jsonwebtoken');
+var expressJwt = require('express-jwt');
+
+var Book = require('./models/bookmodel');
+var User = require('./models/user');
 
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/books', require("./routes/bookRoutes"))
+app.use("/api", expressJwt({secret: config.secret}));
 
-mongoose.connect('mongodb://localhost/bookshelves',  function(err){
+app.use('/auth', require("./routes/authRoutes"));
+app.use('/api/books', require("./routes/bookRoutes"))
+
+mongoose.connect(config.database,  function(err){
     if(err) {
         throw err;
     }

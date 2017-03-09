@@ -13,11 +13,14 @@ angular.module('myApp')
     }
     
     this.getMyBooks = function() {
-        return $http.get("http://localhost:8000/books")
+        return $http.get("http://localhost:8000/api/books")
     }
     
     this.addBook = function(book) {
-        return $http.post("http://localhost:8000/books", book)
+        var listType = book.listType;
+        return $http.post("http://localhost:8000/api/books/" + listType, book).then(function(response){
+        })
+        
     }
     
     this.deleteBook = function(book) {
@@ -25,7 +28,8 @@ angular.module('myApp')
     }
     
     this.editBook = function(book, data){
-        return $http.put("http://localhost:8000/books/" + book._id, data)
+        data.bookId = book._id
+        return $http.put("http://localhost:8000/api/books/userMove/" + data.listType, data)
         .then(function(response){
             response = response.data;
             return response

@@ -1,0 +1,30 @@
+<div class="container">
+    <h4 class='center-align'>Create New User</h4>
+    <div class="row">
+        <form name='signupForm' novalidate>
+            <div input-field class="col s6 offset-s3">
+                <input tab-index="1" type="text" ng-model="user.firstName" required>
+                <label>First Name</label>
+            </div>
+            <div input-field class="col s6 offset-s3">
+                <input tab-index="2" type="text" ng-model="user.lastName" required>
+                <label>Last Name</label>
+            </div>
+            <div input-field class="col s6 offset-s3">
+                <input tab-index="3" type="email" ng-model="user.email" required>
+                <label>email</label>
+            </div>
+            <div input-field class="col s6 offset-s3">
+                <input tab-index="4" type="password" name='password' ng-model="user.password" ng-minlength='8' required>
+                <label>password</label>
+                <p class='help-block' ng-show='signupForm.password.$error.minlength && signupForm.password.$touched'>Password must be at least 8 characters.</p>
+            </div>
+            <div input-field class="col s6 offset-s3">
+                <input tab-index="5" type="password" ng-model="user.passwordRepeat" required>
+                <label>Repeat Password</label>
+                <p class='help-block'>{{passwordMessage}}</p>
+            </div>
+            <button class="blue waves-effect waves-light btn col s2 offset-s5" ng-click='signup(user)' ng-disabled='signupForm.$invalid' message='Account Created!' duration='1000' toast='click'>Sign Up</button>
+        </form>
+    </div>
+</div>

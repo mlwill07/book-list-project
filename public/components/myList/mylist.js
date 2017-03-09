@@ -8,9 +8,8 @@ angular.module('myApp')
     $scope.getMyList = function(){
         bookService.getMyBooks()
             .then(function(response){
-            $scope.futureList = response.data.filter(function(el) { return el.listType === "future"})
-            $scope.currentList = response.data.filter(function(el) { return el.listType === "current"})
-            $scope.pastList = response.data.filter(function(el) { return el.listType === "past"})
+            $scope.readingList = response.data[0].readingList
+            console.log($scope.readingList)
         })
     }
         
@@ -19,11 +18,16 @@ angular.module('myApp')
     $scope.data = {}
     
     $scope.updateList = function(book, data) {
+        if(!data) {
+            var data = {};
+            data.listType = 'delete'
+        }
         bookService.editBook(book, data)
         .then(function(response){
             $scope.getMyList();
         })
     }
+    
     
     $scope.deleteBook = function(book) {
         bookService.deleteBook(book)

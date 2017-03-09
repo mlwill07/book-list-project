@@ -1,6 +1,8 @@
 angular.module('myApp')
 
-.controller('homeController', ['$scope', 'bookService', function($scope, bookService){
+.controller('homeController', ['$scope', 'bookService', 'userService', function($scope, bookService, userService){
+    
+    $scope.auth = userService;
     
     $scope.query = 'Fiction';
     
@@ -21,6 +23,17 @@ angular.module('myApp')
     $scope.data = {};
     
     $scope.addBook = function(book, userInput){ 
+        
+        for(var i = 0; i < book.industryIdentifiers.length; i++) {
+            if (book.industryIdentifiers[i].type === "ISBN_13") {
+                var isbn13 = book.industryIdentifiers[i].identifier
+            } else if (book.industryIdentifiers[i].type === "ISBN_10") {
+                var isbn10 = book.industryIdentifiers[i].identifier
+            }
+        }
+        
+        
+        
         var newBook = {
             title: book.title,
             subtitle: book.subtitle,
@@ -30,10 +43,14 @@ angular.module('myApp')
             pub_date: book.publishedDate,
             publisher: book.publisher,
             infoLink: book.infoLink,
-            isbn_10: book.industryIdentifiers[0].identifier,
             listType: userInput.listType,
+            isbn_10: isbn10,
+            isbn_13: isbn13,
             user_comment: userInput.user_comment
         }
+        
+        $scope.data = {};
+        
         bookService.addBook(newBook).then(function(response){
             
         })

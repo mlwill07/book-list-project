@@ -113,4 +113,36 @@
     padding: 10px;
 }
 
+.ng-invalid.ng-dirty {
+    border-color: red;
+}
 
+.comment-user {
+    line-height: 0.75em;
+    font-size: .85em;
+}
+
+.card-panel {
+    padding: 5px;
+}
+
+.card-comment>p {
+    padding: 2px;
+}
+
+
+.help-block {
+    font-size: .74em;
+    color: red;
+}
+
+.nav-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.card-container {
+    position: relative;
+    top: 50px;
+}

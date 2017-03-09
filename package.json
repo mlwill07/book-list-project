@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
-    "morgan": "^1.8.1",
-    "mongoose": "^4.8.5"
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "^4.8.5",
+    "morgan": "^1.8.1"
   },
   "devDependencies": {},
   "scripts": {

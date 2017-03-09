@@ -1,9 +1,9 @@
-angular.module('myApp', ['ui.materialize', 'ngRoute'])
+angular.module('myApp', ['ui.materialize', 'ngRoute', 'myApp.Auth'])
 
 .config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider
-        .when('/home', {
+        .when('/', {
             templateUrl: 'components/home/home.html',
             controller: 'homeController'
         })
@@ -16,7 +16,7 @@ angular.module('myApp', ['ui.materialize', 'ngRoute'])
             controller: 'searchController'
         })
         .otherwise({
-            redirectTo: '/home'
+            redirectTo: '/'
         })
 }])
 

@@ -1,217 +1,230 @@
-<div class="container">
+<div class="nav-wrapper">
 
-    <div class="row ">
-        <div class="col s12 ">
-            <ul class='tabs-fixed-width blue' tabs reload="allTabContentLoaded">
-                <li class="tab col s3 "><a href="#Current" class="white-text">Current Reading</a></li>
-                <li class="tab col s3 "><a href="#Future" class="white-text ">Future Reading</a></li>
-                <li class="tab col s3 "><a href="#Past" class="white-text ">Past Reading</a></li>
+    <ul class='tabs-fixed-width blue' tabs reload="allTabContentLoaded">
+        <li class="tab col s3 "><a href="#Current" class="white-text">Current Reading</a></li>
+        <li class="tab col s3 "><a href="#Future" class="white-text ">Future Reading</a></li>
+        <li class="tab col s3 "><a href="#Past" class="white-text ">Past Reading</a></li>
 
-            </ul>
-        </div>
+    </ul>
+</div>
 
+
+<div class="container card-container">
+   
+    
         <div id="Current" class="col s12">
-            <div class="col s12">
-                <div class="card horizontal blue-grey darken-1" ng-repeat='book in currentList track by $index'>
-                    <div class="card-image">
-                        <img ng-src="{{book.imgUrl}}">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content white-text">
-                            <div class="col s12">
-                                <h6 class="card-title">{{book.title}}</h6>
-                            </div>
-                            <div class="col s3">
-                                <p ng-repeat='author in book.authors'>Author: {{author}}</p>
-                                <p>Published by: {{book.publisher}}</p>
-                                <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn">Buy</a>
-                            </div>
-                            <div class="col s9 card-description">
-                                <p>{{book.description}}</p>
-                            </div>
+            <div class="row">
+                <div class="col s12">
+
+                    <div class="card horizontal blue-grey darken-1" ng-repeat='book in readingList.current track by $index'>
+                        <div class="card-image">
+                            <img ng-src="{{book.imgUrl}}">
                         </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-green btn-flat" data-target='editModal{{$index+1}}' modal>Edit</a>
-                            <a class="right waves-effect waves-green btn-flat" ng-click="deleteBook(book)">Delete!</a>
-                        </div>
-                        <div id="editModal{{$index+1}}" class="modal editmodal">
-                            <div class="modal-content">
-                                <div class="row modal-rows">
-                                    <div class="col s12">
-                                        <h5>{{book.title}}</h5>
-                                    </div>
-                                    <div class="col s9">
-                                        <div input-field>
-                                            <select name='listType' ng-model="data.listType" material-select watch>
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value='future'>Add to future reading</option>
+                        <div class="card-stacked">
+                            <div class="card-content white-text">
+                                <div class="col s12">
+                                    <h6 class="card-title">{{book.title}}</h6>
+                                </div>
+                                <div class="col s2">
+                                    <p ng-repeat='author in book.authors'>Author: {{author}}</p>
+                                    <p>Published by: {{book.publisher}}</p>
+                                    <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn">Buy</a>
+                                </div>
+                                <div class="col s10 card-description">
+                                    <p>{{book.description}}</p>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-green btn-flat" data-target='editModal{{$index+1}}' modal>Edit</a>
+                                <a class="right waves-effect waves-green btn-flat" ng-click="updateList(book)">Remove!</a>
+                            </div>
+                            <div id="editModal{{$index+1}}" class="modal editmodal">
+                                <div class="modal-content">
+                                    <div class="row modal-rows">
+                                        <div class="col s12">
+                                            <h5>{{book.title}}</h5>
+                                        </div>
+                                        <div class="col s9">
+                                            <div input-field>
+                                                <select name='listType' ng-model="data.listType" material-select watch>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value='future'>Add to future reading</option>
 
-                                                <option value='current'>Add to current reading</option>
+                                                    <option value='current'>Add to current reading</option>
 
-                                                <option value='past'>Add to past reading</option>
+                                                    <option value='past'>Add to past reading</option>
 
-                                            </select>
+                                                </select>
 
-                                            <div ng-if="data.listType === 'past'" input-field>
-                                                <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
-                                                <label>Review</label>
+                                                <div ng-if="data.listType === 'past'" input-field>
+                                                    <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
+                                                    <label>Review</label>
+
+                                                </div>
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
-                                
+                                <div class="modal-footer">
+                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+   
 
 
 
 
 
-
-
+   
         <div id="Future" class="col s12">
-
-            <div class="col s12">
-                <div class="card horizontal blue-grey darken-1" ng-repeat='book in futureList track by $index'>
-                    <div class="card-image">
-                        <img ng-src="{{book.imgUrl}}">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content white-text">
-                            <div class="col s12">
-                                <h6 class="card-title">{{book.title}}</h6>
-                            </div>
-                            <div class="col s3">
-                                <p ng-repeat='author in book.authors'>Author: {{author}}</p>
-                                <p>Published by: {{book.publisher}}</p>
-                                <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn">Buy</a>
-                            </div>
-                            <div class="col s9 card-description">
-                                <p>{{book.description}}</p>
-                            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card horizontal blue-grey darken-1" ng-repeat='book in readingList.future track by $index'>
+                        <div class="card-image">
+                            <img ng-src="{{book.imgUrl}}">
                         </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-green btn-flat" data-target='futureModal{{$index+1}}' modal>Edit</a>
-                            <a class="right waves-effect waves-green btn-flat" ng-click="deleteBook(book)"></ang-click>Delete!</a>
-                        </div>
-                        <div id="futureModal{{$index+1}}" class="modal editmodal">
-                            <div class="modal-content">
-                                <div class="row modal-rows">
-                                    <div class="col s12">
-                                        <h5>{{book.title}}</h5>
-                                    </div>
-                                    <div class="col s9">
-                                        <div input-field>
-                                            <select name='listType' ng-model="data.listType" material-select watch>
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value='future'>Add to future reading</option>
+                        <div class="card-stacked">
+                            <div class="card-content white-text">
+                                <div class="col s12">
+                                    <h6 class="card-title">{{book.title}}</h6>
+                                </div>
+                                <div class="col s3">
+                                    <p ng-repeat='author in book.authors'>Author: {{author}}</p>
+                                    <p>Published by: {{book.publisher}}</p>
+                                    <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn">Buy</a>
+                                </div>
+                                <div class="col s9 card-description">
+                                    <p>{{book.description}}</p>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-green btn-flat" data-target='futureModal{{$index+1}}' modal>Edit</a>
+                                <a class="right waves-effect waves-green btn-flat" ng-click="updateList(book)"></ang-click>Remove!</a>
+                            </div>
+                            <div id="futureModal{{$index+1}}" class="modal editmodal">
+                                <div class="modal-content">
+                                    <div class="row modal-rows">
+                                        <div class="col s12">
+                                            <h5>{{book.title}}</h5>
+                                        </div>
+                                        <div class="col s9">
+                                            <div input-field>
+                                                <select name='listType' ng-model="data.listType" material-select watch>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value='future'>Add to future reading</option>
 
-                                                <option value='current'>Add to current reading</option>
+                                                    <option value='current'>Add to current reading</option>
 
-                                                <option value='past'>Add to past reading</option>
+                                                    <option value='past'>Add to past reading</option>
 
-                                            </select>
+                                                </select>
 
-                                            <div ng-if="data.listType === 'past'" input-field>
-                                                <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
-                                                <label>Review</label>
+                                                <div ng-if="data.listType === 'past'" input-field>
+                                                    <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
+                                                    <label>Review</label>
+
+                                                </div>
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
+                                <div class="modal-footer">
+                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
+   
+    
+   
         <div id="Past" class="col s12">
-
-            <div class="col s12">
-                <div class="card horizontal blue-grey darken-1" ng-repeat='book in pastList track by $index'>
-                    <div class="card-image">
-                        <img ng-src="{{book.imgUrl}}">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content white-text">
-                            <div class="col s12">
-                                <h6 class="card-title">{{book.title}}</h6>
-                            </div>
-                            <div class="col s3">
-                                <p ng-repeat='author in book.authors'>Author: {{author}}</p>
-                                <p>Published by: {{book.publisher}}</p>
-                                <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn">Buy</a>
-                            </div>
-                            
-                            
-                            <div class="col s9 card-description">
-                               <h6>Your Review:</h6>
-                                <p ng-repeat='comment in book.user_comment'>{{comment}}</p>
-                            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card horizontal blue-grey darken-1" ng-repeat='book in readingList.past track by $index'>
+                        <div class="card-image">
+                            <img ng-src="{{book.imgUrl}}">
                         </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-green btn-flat" data-target='pastModal{{$index+1}}' modal>Edit</a>
-                            <a class="right waves-effect waves-green btn-flat" ng-click="deleteBook(book)">Delete!</a>
+                        <div class="card-stacked">
+                            <div class="card-content white-text">
+                                <div class="col s12">
+                                    <h6 class="card-title">{{book.title}}</h6>
+                                </div>
+                                <div class="col s3">
+                                    <p ng-repeat='author in book.authors'>Author: {{author}}</p>
+                                    <p>Published by: {{book.publisher}}</p>
+                                    <a target="_blank" href="{{book.infoLink}}" class="waves-effect waves-light btn blue darken-1">Buy</a>
+                                </div>
 
-                        </div>
-                        <div id="pastModal{{$index+1}}" class="modal editmodal">
-                            <div class="modal-content">
-                                <div class="row modal-rows">
-                                    <div class="col s12">
-                                        <h5>{{book.title}}</h5>
-                                    </div>
-                                    <div class="col s9">
-                                        <div input-field>
-                                            <select name='listType' ng-model="data.listType" material-select watch>
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value='future'>Add to future reading</option>
 
-                                                <option value='current'>Add to current reading</option>
-
-                                                <option value='past'>Add to past reading</option>
-
-                                            </select>
-
-                                            <div ng-if="data.listType === 'past'" input-field>
-                                                <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
-                                                <label>Review</label>
-
-                                            </div>
-
+                                <div class="col s9 card-description">
+                                    <h6>Reviews:</h6>
+                                    <div ng-repeat='comment in book.user_comment' class="card-panel grey ">
+                                        <div class="white-text card-comment">
+                                            <p class='left-align'>{{comment.comment}}</p>
+                                            <p class='comment-user right-align'>{{comment.user.firstName}}</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-action">
+                                <!--                            <a class="waves-effect waves-green btn-flat" data-target='pastModal{{$index+1}}' modal>Edit</a>-->
+                                <a class="right waves-effect waves-green btn-flat" ng-click="updateList(book)">Remove!</a>
 
-                            <div class="modal-footer">
-                                <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
+                            </div>
+                            <div id="pastModal{{$index+1}}" class="modal editmodal">
+                                <div class="modal-content">
+                                    <div class="row modal-rows">
+                                        <div class="col s12">
+                                            <h5>{{book.title}}</h5>
+                                        </div>
+                                        <div class="col s9">
+                                            <div input-field>
+                                                <select name='listType' ng-model="data.listType" material-select watch>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value='future'>Add to future reading</option>
 
+                                                    <option value='current'>Add to current reading</option>
+
+                                                    <option value='past'>Add to past reading</option>
+
+                                                </select>
+
+                                                <div ng-if="data.listType === 'past'" input-field>
+                                                    <textarea ng-model="data.user_comment" class="materialize-textarea"></textarea>
+                                                    <label>Review</label>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='updateList(book, data)'>Move!</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
+    
+    
+</div>
