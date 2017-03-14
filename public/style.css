@@ -1,8 +1,11 @@
-
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 85%;
+    }
+}
 
 .bookitems {
     display: inline-block;
-    
 }
 
 .homeContainer {
@@ -17,14 +20,17 @@
     width: 130px;
     background: center center no-repeat;
     background-size: contain;
-    
 }
 
 #searchModal {
     min-height: 250px;
 }
 
-.options ul >li{
+.options>h5 {
+    font-size: 1.5rem;
+}
+
+.options ul >li {
     padding-left: 0px;
 }
 
@@ -35,14 +41,12 @@
 .bookDiv:hover .bookDiv:focus {
     visibility: visible;
     color: yellow;
-    
 }
 
 .bookSpecs {
     display: inline-block;
     max-height: 200px;
-    
-    text-overflow: clip;    
+    text-overflow: clip;
 }
 
 .modalDescription {
@@ -59,7 +63,8 @@
     margin-top: 20px;
 }
 
-.tabs .tab a:hover, .tabs .tab a.active {
+.tabs .tab a:hover,
+.tabs .tab a.active {
     color: white;
     font-size: 1.5em;
 }
@@ -67,6 +72,7 @@
 .tabs .indicator {
     background-color: #2196f3;
 }
+
 .title {
     padding-right: 75px;
 }
@@ -129,7 +135,6 @@
 .card-comment>p {
     padding: 2px;
 }
-
 
 .help-block {
     font-size: .74em;

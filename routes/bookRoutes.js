@@ -23,7 +23,7 @@ bookRoutes.get("/", function (req, res) {
         })
 })
 
-bookRoutes.post("/:list", function (req, res) {
+bookRoutes.post("/user/:list", function (req, res) {
     var listType = req.params.list;
 
 
@@ -110,7 +110,7 @@ bookRoutes.post("/:list", function (req, res) {
 })
 
 
-bookRoutes.put("/userMove/:list", function (req, res) {
+bookRoutes.put("/user/:list", function (req, res) {
     var listType = req.params.list
     var bookId = req.body.bookId
 

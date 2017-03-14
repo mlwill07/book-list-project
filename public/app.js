@@ -1,6 +1,6 @@
 angular.module('myApp', ['ui.materialize', 'ngRoute', 'myApp.Auth'])
 
-.config(['$routeProvider', function ($routeProvider) {
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
     $routeProvider
         .when('/', {
@@ -15,8 +15,14 @@ angular.module('myApp', ['ui.materialize', 'ngRoute', 'myApp.Auth'])
             templateUrl: 'components/search/search.html',
             controller: 'searchController'
         })
+//        .when('/myprofile', {
+//            templateUrl: 'components/profile/profile.html',
+//            controller: 'profileController'
+//        })
         .otherwise({
             redirectTo: '/'
         })
+    
+    
 }])
 

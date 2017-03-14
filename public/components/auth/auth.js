@@ -30,7 +30,9 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
     }
 }])
 
-.service("userService", ["tokenService", "$location", "$http", function(tokenService, $location, $http){
+.service("userService", ["tokenService", "$location", "$http", "$localStorage", function(tokenService, $location, $http, $localStorage){
+    this.user = $localStorage.user
+    
     this.signup = function(user) {
         return $http.post('/auth/signup', user)
     }
@@ -38,12 +40,14 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
     this.login = function(user) {
         return $http.post('/auth/login', user).then(function(response){
             tokenService.setToken(response.data.token);
+            $localStorage.user = response.data.user;
             return response.data
         })
     }
     
     this.logout = function() {
         tokenService.removeToken();
+        delete $localStorage.user;
         $location.path('/');
     }
     

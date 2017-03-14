@@ -18,7 +18,7 @@ angular.module('myApp')
     
     this.addBook = function(book) {
         var listType = book.listType;
-        return $http.post("http://localhost:8000/api/books/" + listType, book).then(function(response){
+        return $http.post("http://localhost:8000/api/books/user/" + listType, book).then(function(response){
         })
         
     }
@@ -29,7 +29,7 @@ angular.module('myApp')
     
     this.editBook = function(book, data){
         data.bookId = book._id
-        return $http.put("http://localhost:8000/api/books/userMove/" + data.listType, data)
+        return $http.put("http://localhost:8000/api/books/user/" + data.listType, data)
         .then(function(response){
             response = response.data;
             return response

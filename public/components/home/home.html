@@ -1,6 +1,17 @@
 <div class='container'>
     <div class="row">
-        <div class="col m12 l9 main">
+       
+       <div class="col m12 l2 options left-align">
+           <h3>&nbsp</h3>
+            <h5 data-target='searchModal' modal class="blue lighten-3 waves-effect waves-blue btn-flat">Search</h5>
+
+            <h5 class="blue lighten-3 waves-effect waves-blue btn-flat" ng-click="subject = !subject">Subject</h5>
+            <ul ng-show="subject">
+                <li ng-repeat="subject in subjects" ng-click="assignQuery(subject)"><a class="waves-effect waves-green btn-flat">{{subject}}</a></li>
+
+            </ul>
+        </div>
+        <div class="col m12 l10 main">
             <h3 class="center-align title">{{query}}</h3>
             <div class="row homeContainer">
                 <div class="bookitems" ng-repeat='title in newReleases track by $index'>
@@ -71,15 +82,7 @@
 
         </div>
 
-        <div class="col m12 l3 options left-align">
-            <h5 data-target='searchModal' modal class="blue lighten-3 waves-effect waves-blue btn-flat">Search</h5>
-
-            <h5 class="blue lighten-3 waves-effect waves-blue btn-flat" ng-click="subject = !subject">Subject</h5>
-            <ul ng-show="subject">
-                <li ng-repeat="subject in subjects" ng-click="assignQuery(subject)"><a class="waves-effect waves-green btn-flat">{{subject}}</a></li>
-
-            </ul>
-        </div>
+        
         <div id="searchModal" class="modal">
             <div class="modal-content">
                 <div input-field>
