@@ -3,8 +3,7 @@ angular.module('myApp')
 .controller('homeController', ['$scope', 'bookService', 'userService', function($scope, bookService, userService){
     
     $scope.auth = userService;
-    console.log($scope.auth.isAuthenticated());
-    
+   
     $scope.query = 'Fiction';
     
     $scope.subjects = ["Biography", "Chick Lit", "Classics", "Contemporary", "Crime", "Fantasy", "Fiction", "Historical Fiction", "History", "Horror", "Memoir", "Mystery", "Nonfiction", "Paranormal", "Romance", "Science", "Science Fiction", "Suspense", "Spirituality", "Sports", "Thriller", "Travel"]

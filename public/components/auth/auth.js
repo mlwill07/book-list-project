@@ -59,6 +59,7 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
 .service('authInterceptor', ["$q", "$location", "tokenService", function($q, $location, tokenService){
     this.request = function(config) {
         var token = tokenService.getToken();
+
         if(token && config.url.indexOf($location.host()) > -1) {
             config.headers = config.headers || {};
             config.headers.Authorization = "Bearer " + token
