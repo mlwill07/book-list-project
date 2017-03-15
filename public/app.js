@@ -8,7 +8,7 @@ angular.module('myApp', ['ui.materialize', 'ngRoute', 'myApp.Auth'])
             controller: 'homeController'
         })
         .when('/mylist', {
-            templateUrl: 'components/mylist/mylist.html',
+            templateUrl: 'components/myList/mylist.html',
             controller: 'listController'
         })
         .when('/search', {
