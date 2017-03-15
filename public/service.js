@@ -13,23 +13,23 @@ angular.module('myApp')
     }
     
     this.getMyBooks = function() {
-        return $http.get("http://localhost:8000/api/books")
+        return $http.get("/api/books")
     }
     
     this.addBook = function(book) {
         var listType = book.listType;
-        return $http.post("http://localhost:8000/api/books/user/" + listType, book).then(function(response){
+        return $http.post("/api/books/user/" + listType, book).then(function(response){
         })
         
     }
     
     this.deleteBook = function(book) {
-        return $http.delete("http://localhost:8000/books/" + book._id)
+        return $http.delete("/books/" + book._id)
     }
     
     this.editBook = function(book, data){
         data.bookId = book._id
-        return $http.put("http://localhost:8000/api/books/user/" + data.listType, data)
+        return $http.put("/api/books/user/" + data.listType, data)
         .then(function(response){
             response = response.data;
             return response
