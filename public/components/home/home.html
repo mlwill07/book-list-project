@@ -66,7 +66,7 @@
                         </div>
                         <div class="modal-footer">
 
-                            <button class="waves-effect waves-green btn-flat" ng-click="adding = !adding" ng-hide='adding' ng-show='auth.isAuthenticated()'>Add to My List</button>
+                            <button class="waves-effect waves-green btn-flat" ng-click="adding = !adding" ng-hide='adding' ng-if='auth.isAuthenticated()'>Add to My List</button>
 
                             <button ng-show='adding' href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='addBook(title.volumeInfo, data)' message="Added!" duration="1000" toast='click' >Add</button>
                         </div>

@@ -3,6 +3,7 @@ angular.module('myApp')
 .controller('homeController', ['$scope', 'bookService', 'userService', function($scope, bookService, userService){
     
     $scope.auth = userService;
+    console.log($scope.auth.isAuthenticated());
     
     $scope.query = 'Fiction';
     
