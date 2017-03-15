@@ -60,8 +60,8 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
     this.request = function(config) {
         var token = tokenService.getToken();
         console.log($location.host())
-        console.log(config.url)
-        if(token && config.url.indexOf($location.host()) > -1) {
+        console.log(config)
+        if(token && config.url.indexOf("www.googleapis.com") === -1) {
             config.headers = config.headers || {};
             config.headers.Authorization = "Bearer " + token
         }
