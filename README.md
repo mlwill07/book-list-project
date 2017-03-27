@@ -1,13 +1,13 @@
 Book List
 ========
 
-Currently under progress.
+* A CRUD single-page application built with Angular and Materialize
+* Gets a list of books, by subject or search
+* Each book can be added to the current, future or past reading list with comments added.
+* Books are saved to a locally hosted mongoDB database.
 
-This will be a full stack web app that manages a list of books.
-
-<!--
 ### Project Setup
-*cd into 'bookList'
-*npm install
-*npm nodemon server.js
-*enjoy-->
+1. cd into 'bookList'
+2. npm install
+3. npm nodemon server.js
+4. enjoy

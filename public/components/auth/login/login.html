@@ -9,6 +9,7 @@
             <div input-field class="col s4 offset-s4">
                 <input tab-index="2" type="password" ng-model="user.password" required>
                 <label>password</label>
+                <a href="#/forgot">Forgot Password?</a>
             </div>
             <button class="blue waves-effect waves-light btn col s2 offset-s5" ng-click='login(user)' ng-disabled='loginForm.$invalid' message='Welcome!' duration='1000' toast='click'>Login</button>
         </form>

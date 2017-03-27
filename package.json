@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.1.5",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.16.1",
+    "crypto": "0.0.3",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.5",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "sendgrid": "^4.8.4"
   },
   "devDependencies": {},
   "scripts": {

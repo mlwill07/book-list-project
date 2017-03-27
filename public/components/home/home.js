@@ -1,6 +1,6 @@
 angular.module('myApp')
 
-.controller('homeController', ['$scope', 'bookService', 'userService', function($scope, bookService, userService){
+.controller('homeController', ['$scope', 'bookService', 'userService', '$location' ,function($scope, bookService, userService, $location){
     
     $scope.auth = userService;
    
@@ -52,7 +52,7 @@ angular.module('myApp')
         $scope.data = {};
         
         bookService.addBook(newBook).then(function(response){
-            
+            $location.path('/mylist')
         })
         
     }

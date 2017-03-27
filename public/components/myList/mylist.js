@@ -9,7 +9,6 @@ angular.module('myApp')
         bookService.getMyBooks()
             .then(function(response){
             $scope.readingList = response.data[0].readingList
-            console.log($scope.readingList)
         })
     }
         

@@ -37,11 +37,11 @@
                                     <img class='modal-img' ng-src="{{title.volumeInfo.imageLinks.smallThumbnail}}" alt="">
 
                                 </div>
-                                <div class="col s9" ng-if='!title.adding'>
+                                <div class="col s9" ng-show='!title.adding'>
                                     <p class='modalDescription'>{{title.volumeInfo.description}}</p>
                                 </div>
 
-                                <div class="col s9" ng-if='title.adding'>
+                                <div class="col s9" ng-show='title.adding'>
                                     <div input-field>
                                         <select name='listType' ng-model="data.listType" material-select watch>
                                             <option value="" disabled selected>Choose your option</option>
@@ -66,9 +66,9 @@
                         </div>
                         <div class="modal-footer">
 
-                            <button class="waves-effect waves-green btn-flat" ng-click="title.adding = !title.adding" ng-if='!title.adding && auth.isAuthenticated()' >Add to My List</button>
+                            <button class="waves-effect waves-green btn-flat" ng-click="title.adding = !title.adding" ng-show='!title.adding && auth.isAuthenticated()' >Add to My List</button>
 
-                            <button ng-if='title.adding' href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='addBook(title.volumeInfo, data)' message="Added!" duration="1000" toast='click' >Add</button>
+                            <button ng-show='title.adding'  class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='addBook(title.volumeInfo, data)' message="Added!" duration="1000" toast='click' >Add</button>
                         </div>
 
                     </div>
