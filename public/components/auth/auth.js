@@ -10,6 +10,14 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
             templateUrl: "components/auth/login/login.html",
             controller: "loginController"
         })
+        .when("/forgot", {
+            templateUrl: "components/auth/forgot/forgot.html",
+            controller: "forgotController"
+        })
+        .when("/reset/:resetToken", {
+            templateUrl: "components/auth/reset/reset.html",
+            controller: "PasswordResetController"
+        })
         .when("/logout", {
             template: "",
             controller: "logoutController"
@@ -54,13 +62,26 @@ angular.module("myApp.Auth", ["ngRoute", "ngStorage"])
     this.isAuthenticated = function() {
         return !!tokenService.getToken();
     }
+
+    this.forgotPassword = function(email) {
+        $http.post("/auth/forgot", {email: email}).then(function(response) {
+            return response.data;
+        })
+    }
+
+    this.resetForgottenPassword = function(password, resetToken) {
+        return $http.post('/auth/reset', {password: password, resetToken: resetToken}).then(function(response){
+            return response.data.message
+        })
+    }
+
+
 }])
 
 .service('authInterceptor', ["$q", "$location", "tokenService", function($q, $location, tokenService){
     this.request = function(config) {
         var token = tokenService.getToken();
-        console.log($location.host())
-        console.log(config)
+
         if(token && config.url.indexOf("www.googleapis.com") === -1) {
             config.headers = config.headers || {};
             config.headers.Authorization = "Bearer " + token

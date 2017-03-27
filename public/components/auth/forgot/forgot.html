@@ -1,0 +1,15 @@
+<div class="container">
+    <h4 class='center-align'>Reset Password</h4>
+    <div class="row">
+
+        <p>In order to verify your identity and reset your password, please provide the email you used when you originally signed up.</p>
+
+        <form name='forgotForm' novalidate>
+            <div input-field class="col s4 offset-s4">
+                <input tab-index="1" type="email" ng-model="email" placeholder="email" required>
+            </div>
+
+            <button class="blue waves-effect waves-light btn col s2 offset-s5" ng-click='forgotPassword(email)' ng-disabled='forgotForm.$invalid' message='Sent!' duration='1000' toast='click'>Reset Password</button>
+        </form>
+    </div>
+</div>

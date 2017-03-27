@@ -20,7 +20,7 @@ angular.module('myApp')
         var listType = book.listType;
         console.log("addbooks")
         return $http.post("/api/books/user/" + listType, book).then(function(response){
-            console.log(response)
+
         })
         
     }

@@ -14,8 +14,12 @@ var userSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/, 'Please fill a valid email address']
     },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     password: {
         type: String,
         required: true
